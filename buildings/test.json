@@ -1,0 +1,26 @@
+{
+	"name": "Test Building",
+	"roomCount": 4,
+	"rooms": [
+		{
+			"id": 0,
+			"position": [-2,2],
+			"connected": [1,3]
+		},
+		{
+			"id": 1,
+			"position": [2,2],
+			"connected": [0,2]
+		},
+		{
+			"id": 2,
+			"position": [2,-2],
+			"connected": [1,3]
+		},
+		{
+			"id": 3,
+			"position": [-2,-2],
+			"connected": [2,0]
+		}
+	]
+}
