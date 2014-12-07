@@ -4,67 +4,67 @@
 	"rooms": [
 		{
 			"id": 1,
-			"Name": "Lobby",
+			"name": "Lobby",
 			"position": [1053,176],
 			"connected": [2,3]
 		},
 		{
 			"id": 2,
-			"Name": "Lounge",
+			"name": "Lounge",
 			"position": [1057,517],
 			"connected": [1,10]
 		},
 		{
 			"id": 3,
-			"Name": "West-East Corridor",
+			"name": "West-East Corridor",
 			"position": [756,333],
 			"connected": [4,5,6]
 		},
 		{
 			"id": 4,
-			"Name": "Dining Room",
+			"name": "Dining Room",
 			"position": [750,510],
 			"connected": [3,7]
 		},
 		{
 			"id": 5,
-			"Name": "Study",
+			"name": "Study",
 			"position": [758,169],
 			"connected": [3,10]
 		},
 		{
 			"id": 6,
-			"Name": "North-South Corridor",
+			"name": "North-South Corridor",
 			"position": [583,-280],
 			"connected": [3,7,8,9]
 		},
 		{
 			"id": 7,
-			"Name": "Bathroom",
+			"name": "Bathroom",
 			"position": [426,603],
 			"connected": [6,4]
 		},
 			{
 			"id": 8,
-			"Name": "Kitchen",
+			"name": "Kitchen",
 			"position": [399,361],
 			"connected": [6,9,11]
 		},
 		{
 			"id": 9,
-			"Name": "Bedroom",
+			"name": "Bedroom",
 			"position": [419,107],
 			"connected": [6,8,10]
 		},
 		{
 			"id": 10,
-			"Name": "Attic",
+			"name": "Attic",
 			"position": [114,404],
 			"connected": [2,5,9]
 		},
 		{
 			"id": 11,
-			"Name": "Cellar",
+			"name": "Cellar",
 			"position": [125,141],
 			"connected": [8]
 		}
