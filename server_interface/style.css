@@ -16,7 +16,7 @@ body {
 	margin-left: 10%;
 }
 
-.map_tile {
+.map_tile, .map_selected {
 	float: left;
 	width: 120px;
 	height: 120px;
@@ -25,11 +25,6 @@ body {
 }
 
 .map_selected {
-	float: left;
-	width: 120px;
-	height: 120px;
-	background-color: blue;
-	margin: 20px;
 	border-style: ridge;
 	border-width: 5px;
 	border-color: red;
@@ -53,6 +48,7 @@ body {
 }
 
 .player {
+	display: none;
 	float: left;
 	width: 40px;
 	height: 40px;
