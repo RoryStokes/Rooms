@@ -20,7 +20,7 @@ body {
 	float: left;
 	width: 120px;
 	height: 120px;
-	background-color: blue;
+	background-color: black;
 	margin: 20px;
 }
 
@@ -75,7 +75,7 @@ body {
    background images
 ======================*/
 
-#map1 { background-image: url('map1.gif'); }
+#map1 { background-image: url('map1_thumb.png'); }
 
 #pl1 { background-image: url('letters/spr_ip_3.png'); }
 
