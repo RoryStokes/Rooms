@@ -79,6 +79,9 @@ def init(request):
 	game = Game()
 	return HttpResponse("Ready to connect")
 
+def setup(request):
+	return HttpResponse(open("static/index.html"))
+
 def start(request):
 	global game
 	if len(game.players) > 2:
