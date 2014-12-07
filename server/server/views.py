@@ -6,14 +6,71 @@ import json
 def connect(request):
 	global game
 	if game.started:
-		return HttpResponse("Game has started")
+		return HttpResponse('[{"messages": ["Error: the game has already started."], "moveIDs": [], "moveNames": []}]')
 	if request.method == 'GET':
 		id = game.addPlayer(request.GET['name'])
 
 		while not game.started:
 			pass
 
-		response = {"id": id, "target": game.player(id).target.name}
+		player = game.player(id)
+		response = {"id": id, "cop": player.cop, "currentRoom": player.currentRoom['name'], "moveIDs": player.currentRoom['connected'],
+		 "moveNames": [ game.map['rooms'][i]['name'] for i in player.currentRoom['connected'] ] }
+		messages = []
+		messages.append("The game has started.")
+		messages.append("You are in the "+player.currentRoom['name']+".")
+
+		if player.cop:
+			messages.append("You are the cop.")
+		else:
+			messages.append("Your target is "+player.target.name+".")
+			messages.append(game.cop.name + " is the cop.")
+			response["target"] = player.target.name
+
+		for line in othersInRoom(game,player):
+			messages.append(line)
+
+		response["messages"] = messages
+
+		return HttpResponse(json.dumps([response]))
+	return HttpResponse("")
+
+def othersInRoom(game,player):
+	for other in game.players:
+		if other != player:
+			yield(other.name + " is in the room with you.")
+
+def action(request):
+	global game
+	if not game.started:
+		return HttpResponse('[{"messages": "Error: the game has not yet started.", "moveIDs": [], "moveNames": []}]')
+	if request.method == 'GET':
+		id = request.GET['id']
+		action = request.GET['action']
+
+		while not game.started:
+			pass
+
+		player = game.player(id)
+		response = {"id": id, "cop": player.cop, "currentRoom": player.currentRoom['name'], "moveIDs": player.currentRoom['connected'],
+		 "moveNames": [ game.map['rooms'][i]['name'] for i in player.currentRoom['connected'] ] }
+		messages = []
+		messages.append("The game has started.")
+		messages.append("You are in the "+player.currentRoom['name']+".")
+
+		if player.cop:
+			messages.append("You are the cop")
+		else:
+			messages.append("Your target is "+player.target.name+".")
+			messages.append(game.cop.name + " is the cop.")
+			response["target"] = player.target.name
+
+		for other in game.players:
+			if other != player:
+				messages.append(other.name + " is in the room with you.")
+
+		response["messages"] = messages
+
 		return HttpResponse(json.dumps([response]))
 	return HttpResponse("")
 
@@ -24,8 +81,9 @@ def init(request):
 
 def start(request):
 	global game
-	if len(game.players) > 1:
+	if len(game.players) > 2:
 		game.setTargets()
+		game.loadMap('test')
 		game.started = True
 		return HttpResponseRedirect('game')
 
