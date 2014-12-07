@@ -6,7 +6,8 @@
 	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
 	<link href="style.css" rel="stylesheet" type="text/css">
 	<script>
-		map = 0;
+		var map = 0;
+		var players = 0;
 		function selectMap(n) {
 			if (map) {
 				document.getElementById("map"+map).className = "map_tile"; }
@@ -18,8 +19,13 @@
 		}
 		function start() {
 			if (map) {
-				//window.location.href = "start?map=map"+map;
+				alert("map"+map)
 				window.location.href = "start?map=test"; }
+		}
+		function addPlayer() {
+			if (players < 8) {
+				players++;
+				document.getElementById("pl"+players).style.display = "block"; }
 		}
 	</script>
 </head>
